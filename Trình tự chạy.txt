@@ -1,0 +1,30 @@
+// khoi chay floodlight
+sudo java -jar target/floodlight.jar
+
+// train mo hinh machine learning voi CICIDS2017_processed
+python3 machinelearning/ML_trainer.py --csv dataset/CICIDS2017_processed.csv
+
+//train xong thi kiem tra hieu nang cua mo hinh ML qua cac file anh
+
+// khoi chay topology
+python3 mininet/topology.py
+
+// chay cac host nho
+xterm h1 h2 h3
+h1: python3 -m http.server 80
+h2: csh mininet/ping.csh
+
+// khoi chay wireshark de xem bieu do traffic truoc khi ddos
+
+// chay ddos ma khong co ML (chay tan cong trong 300s de de quan sat)
+h3: sh mininet/ddos.sh
+
+// khoi chay 2 file shell ho tro bat traffic realtime
+./processing/capture_tcmpdump.sh
+./processing/pcap_processor.sh
+
+// chay floodlight realtime
+python3 controller/realtime_floodlight_ML.py --csv /output/final_csv/Predict.csv --threshold 0.07
+
+// chay lai ddos tren h3 lan nay co realtime ML
+
