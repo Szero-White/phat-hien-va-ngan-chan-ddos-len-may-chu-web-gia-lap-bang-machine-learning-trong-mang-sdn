@@ -174,5 +174,3 @@ python3 controller/realtime_floodlight_ML.py --csv output/final_csv/Predict.csv 
 - `output/final_csv/Predict.csv`: CSV đặc trưng thời gian thực từ PCAP.
 - `model.pkl`, `metadata.pkl`: mô hình và meta cho suy luận realtime.
 - `model_eval_roc.png`, `model_eval_pr.png`, `model_eval_cm.png`: ảnh đánh giá mô hình.
-
-Chúc bạn demo thành công!
